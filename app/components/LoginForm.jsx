@@ -9,15 +9,6 @@ import styles from "./LoginFormStyles";
 import { useRouter } from "expo-router";
 import RandomPositionWrapper from "./RandomPositionWrapper";
 
-const WelcomeScreen = ({ onLogout }) => (
-  <View style={styles.container}>
-    <Text style={styles.title}>Välkommen!</Text>
-    <TouchableOpacity style={styles.button} onPress={onLogout}>
-      <Text style={styles.buttonText}>Logga ut</Text>
-    </TouchableOpacity>
-  </View>
-);
-
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,17 +37,6 @@ const LoginForm = () => {
       setError("Fel användarnamn eller lösenord");
     }
   };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-  };
-
-  if (isLoggedIn) {
-    return <WelcomeScreen onLogout={handleLogout} />;
-  }
 
   return (
     <RandomPositionWrapper>
